@@ -4,36 +4,78 @@
  * [622] Design Circular Queue
  */
 
+#include <iostream>
+
+using namespace std;
+
 // @lc code=start
-class MyCircularQueue {
+class MyCircularQueue
+{
 public:
-    MyCircularQueue(int k) {
-        
+    MyCircularQueue(int k)
+    {
+        data = new int[k];
+        head = 0;
+        tail = 0;
+        size = 0;
+        capacity = k;
     }
-    
-    bool enQueue(int value) {
-        
+
+    ~MyCircularQueue()
+    {
+        delete[] data;
     }
-    
-    bool deQueue() {
-        
+
+    bool enQueue(int value)
+    {
+        if (isFull())
+        {
+            return false;
+        }
+        data[tail] = value;
+        tail = (tail + 1) % capacity;
+        size++;
+
+        return true;
     }
-    
-    int Front() {
-        
+
+    bool deQueue()
+    {
+        if (isEmpty())
+        {
+            return false;
+        }
+        head = (head + 1) % capacity;
+        size--;
+        return true;
     }
-    
-    int Rear() {
-        
+
+    int Front()
+    {
+        return isEmpty() ? -1 : data[head];
     }
-    
-    bool isEmpty() {
-        
+
+    int Rear()
+    {
+        return isEmpty() ? -1 : data[(tail + capacity - 1) % capacity];
     }
-    
-    bool isFull() {
-        
+
+    bool isEmpty()
+    {
+        return size == 0;
     }
+
+    bool isFull()
+    {
+        return size == capacity;
+    }
+
+protected:
+    int *data;
+    int head;
+    int tail;
+    int size;
+    int capacity;
 };
 
 /**
@@ -48,3 +90,17 @@ public:
  */
 // @lc code=end
 
+int main()
+{
+    MyCircularQueue myCircularQueue = MyCircularQueue(3);
+    myCircularQueue.enQueue(1); // return True
+    myCircularQueue.enQueue(2); // return True
+    myCircularQueue.enQueue(3); // return True
+    myCircularQueue.enQueue(4); // return False
+    myCircularQueue.Rear();     // return 3
+    myCircularQueue.isFull();   // return True
+    myCircularQueue.deQueue();  // return True
+    myCircularQueue.enQueue(4); // return True
+    myCircularQueue.Rear();     // return 4
+    return 0;
+}
