@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode id=862 lang=cpp
- * @lcpr version=20001
+ * @lc app=leetcode id=912 lang=cpp
+ * @lcpr version=20002
  *
- * [862] Shortest Subarray with Sum at Least K
+ * [912] Sort an Array
  */
 
 
@@ -27,7 +27,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int shortestSubarray(vector<int>& nums, int k) {
+    vector<int> sortArray(vector<int>& nums) {
         
     }
 };
@@ -37,15 +37,11 @@ public:
 
 /*
 // @lcpr case=start
-// [1]\n1\n
+// [5,2,3,1]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [1,2]\n4\n
-// @lcpr case=end
-
-// @lcpr case=start
-// [2,-1,2]\n3\n
+// [5,1,1,2,0,0]\n
 // @lcpr case=end
 
  */
