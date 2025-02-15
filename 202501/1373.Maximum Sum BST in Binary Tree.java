@@ -9,7 +9,7 @@
 // @lcpr-template-start
 // @lcpr-template-end
 
-public class TreeNode {
+class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
